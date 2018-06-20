@@ -29,7 +29,7 @@ python script/doc2vec_img2dict.py --dataset --img_feature_file
 Pre-training:
 ```
 python pytorch/pre_train.py --embed_size --neg_number=20
-'''
+```
 
 5. Train and test the framework.
 ```
