@@ -77,10 +77,10 @@ def main(argv=None):
 	user_bought = train_data.user_bought
 	with tf.Session(config=config) as sess:
 		train(sess, train_iter, item_size, user_size, 
-								test_data, all_items_idx, user_bought)
+						test_data, all_items_idx, user_bought)
 
 def train(sess, train_iter, item_size, user_size, 
-								test_data, all_items_idx, user_bought):
+						test_data, all_items_idx, user_bought):
 
 	############################### CREATE MODEL #############################
 	
@@ -118,7 +118,7 @@ def train(sess, train_iter, item_size, user_size,
 		except tf.errors.OutOfRangeError:
 			test(model, sess, test_data, all_items_idx, user_bought)
 			print("Epoch %d " %epoch + "Took: " + time.strftime("%H: %M: %S", 
-										time.gmtime(time.time() - start_time)))
+							time.gmtime(time.time() - start_time)))
 
 	################################## SAVE MODEL ################################
 
