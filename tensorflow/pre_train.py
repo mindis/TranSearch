@@ -10,7 +10,7 @@ import data_input
 
 class PreTrain(object):
 	def __init__(self, visual_size, text_size, embed_size, 
-									lr, dropout, is_training):
+							lr, dropout, is_training):
 		"""
 			For both visual and textual parts, we use
 			several fully connnected layers,
@@ -78,11 +78,11 @@ class PreTrain(object):
 			return text, vis
 
 		self.anchor_text_forward, self.anchor_vis_forward = add_encode_layers(
-										self.anchor_text, self.anchor_vis)
+								self.anchor_text, self.anchor_vis)
 		self.pos_text_forward, self.pos_vis_forward = add_encode_layers(
-										self.pos_text, self.pos_vis)
+								self.pos_text, self.pos_vis)
 		self.neg_text_forward, self.neg_vis_forward = add_encode_layers(
-										self.neg_text, self.neg_vis)
+								self.neg_text, self.neg_vis)
 
 		self.anchor_text_backward, self.anchor_vis_backward = add_decode_layers(
 							self.anchor_text_forward, self.anchor_vis_forward)
