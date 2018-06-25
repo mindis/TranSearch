@@ -126,8 +126,10 @@ class TranSearch(nn.Module):
 		if self.is_training or test_first:
 			# Postive features attention and concatenation.
 			if self.mode == 'vis':
+				pos_vis = self.visual_FC(pos_vis)
 				pos_concat = pos_vis
 			elif self.mode == 'text':
+				pos_text = self.textual_FC(pos_text)
 				pos_concat = pos_text
 			else:
 				pos_vis = self.visual_FC(pos_vis)
@@ -140,8 +142,10 @@ class TranSearch(nn.Module):
 		if self.is_training:
 			# Negative features attention and concatenation.
 			if self.mode == 'vis':
+				neg_vis = self.visual_FC(neg_vis)
 				neg_concat = neg_vis
 			elif self.mode == 'text':
+				neg_text = self.textual_FC(neg_text)
 				neg_concat = neg_text
 			else:
 				neg_vis = self.visual_FC(neg_vis)
