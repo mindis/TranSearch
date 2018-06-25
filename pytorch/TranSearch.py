@@ -115,7 +115,7 @@ class TranSearch(nn.Module):
 		return f_onehot
 
 	def forward(self, user, query, pos_vis, pos_text, 
-										neg_vis, neg_text, test_first):
+						neg_vis, neg_text, test_first):
 		if not test_first:
 			user = self.convert_onehot(user)
 			user = self.user_embed(user)
@@ -239,7 +239,7 @@ def main():
 	############################## CREATE MODEL ###########################
 
 	full_data = pd.read_csv(os.path.join(ROOT_DIR, 
-						FLAGS.dataset, 'full.csv'), usecols=['userID'])
+					FLAGS.dataset, 'full.csv'), usecols=['userID'])
 	user_size = len(full_data.userID.unique())
 
 	# Create model.
@@ -289,7 +289,7 @@ def main():
 			
 		elapsed_time = time.time() - start_time
 		print("Epoch: %d\t" %epoch + "Epoch time: " + time.strftime(
-										"%H: %M: %S", time.gmtime(elapsed_time)))
+							"%H: %M: %S", time.gmtime(elapsed_time)))
 		print("Mrr is %.3f.\nHit ratio is %.3f.\nNdcg is %.3f.\n" %(
 																Mrr, Hr, Ndcg))
 
