@@ -7,8 +7,8 @@ import tensorflow as tf
 
 class TranSearch(object):
 	def __init__(self, visual_size, text_size, embed_size, item_size, 
-						user_size, mode, lr, regularizer, optim, activation_func, 
-						test_first, dropout, neg_num, is_training):
+					user_size, mode, lr, regularizer, optim, activation_func, 
+					test_first, dropout, neg_num, is_training):
 		"""
 		Important Args:
 		visual_size: the image feature size, is 4096 as default.
@@ -38,29 +38,29 @@ class TranSearch(object):
 		""" Initialize important settings """
 		with tf.name_scope("inputs"):
 			self.user = tf.placeholder(dtype=tf.int32, 
-										shape=[None], 
-										name='user')
+								shape=[None], 
+								name='user')
 			self.query = tf.placeholder(dtype=tf.float32, 
-										shape=[None, 512], 
-										name='query')
+								shape=[None, 512], 
+								name='query')
 			self.pos_text = tf.placeholder(dtype=tf.float32, 
-										shape=[None, 512], 
-										name='pos_text')
+								shape=[None, 512], 
+								name='pos_text')
 			self.pos_vis = tf.placeholder(dtype=tf.float32, 
-										shape=[None, 4096], 
-										name='pos_vis')
+								shape=[None, 4096], 
+								name='pos_vis')
 			self.neg_text = tf.placeholder(dtype=tf.float32, 
-										shape=[None, self.neg_num, 512], 
-										name='neg_text')
+								shape=[None, self.neg_num, 512], 
+								name='neg_text')
 			self.neg_vis = tf.placeholder(dtype=tf.float32, 
-										shape=[None, self.neg_num, 4096], 
-										name='neg_vis')
+								shape=[None, self.neg_num, 4096], 
+								name='neg_vis')
 			self.all_items = tf.placeholder(dtype=tf.float32, 
-										shape=[None, self.embed_size],
-										name='all_items')
+								shape=[None, self.embed_size],
+								name='all_items')
 
 		self.regularizer = tf.contrib.layers.l2_regularizer(
-											self.regularizer_rate)
+								self.regularizer_rate)
 		if self.activation_func == 'ReLU':
 			self.activation_func = tf.nn.relu
 		elif self.activation_func == 'Leaky_ReLU':
@@ -70,10 +70,10 @@ class TranSearch(object):
 
 		if self.optim == 'SGD':
 			self.optimizer = tf.train.GradientDescentOptimizer(self.lr, 
-															name='SGD')
+								name='SGD')
 		elif self.optim == 'RMSProp':
 			self.optimizer = tf.train.RMSPropOptimizer(self.lr, decay=0.9, 
-											momentum=0.0, name='RMSProp')
+								momentum=0.0, name='RMSProp')
 		elif self.optim == 'Adam':
 			self.optimizer = tf.train.AdamOptimizer(self.lr, name='Adam')
 
@@ -206,7 +206,7 @@ class TranSearch(object):
 	def loss_func(self):
 		reg = tf.get_collection(tf.GraphKeys.REGULARIZATION_LOSSES)
 		reg_loss = tf.contrib.layers.apply_regularization(
-												self.regularizer, reg)
+									self.regularizer, reg)
 		self.final_loss = self.triplet_loss(self.item_predict, self.pos_item_trans, 
 						self.neg_item_trans) + reg_loss
 
@@ -221,7 +221,7 @@ class TranSearch(object):
 	def summary(self):
 		""" Create summaries to write on tensorboard. """
 		self.writer = tf.summary.FileWriter(
-								'./graphs/TranSearch', tf.get_default_graph())
+					'./graphs/TranSearch', tf.get_default_graph())
 		with tf.name_scope("summaries"):
 			tf.summary.scalar('loss', self.final_loss)
 			self.summary_op = tf.summary.merge_all()
