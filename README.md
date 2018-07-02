@@ -4,7 +4,7 @@ A pytorch and tensorflow GPU implementation for our paper:
 
 Yangyang Guo, Zhiyong Cheng, Liqiang Nie, Xin-Shun Xu, Mohan Kankanhalli (2018). Multi-modal Preference Modeling for Product Search. In Proceedings of ACM MM 2018.
 
-#Please cite our WWW'17 paper if you use our codes. Thanks!
+# Please cite our WWW'17 paper if you use our codes. Thanks!
 
 Please download the Amazon Dataset from http://jmcauley.ucsd.edu/data/amazon.
 
