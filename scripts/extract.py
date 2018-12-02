@@ -251,7 +251,7 @@ def main():
         help="Stop words file.")
     parser.add_argument('--save_path', type=str, default='./processed',
         help="Destination to save all the files.")
-    parser.add_argument('--is_clothing', type=bool, default=False,
+    parser.add_argument('--is_clothing', action='store_false', default=False,
         help="Clothing dataset needs to be split.")
     parser.add_argument("--img_feature_file", default="img_features_Clothing.b",
                     type=str, help="the raw image feature file.")
