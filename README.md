@@ -28,7 +28,7 @@ python script/extract.py --data_dir --count --is_clothing --img_feature_file
 python script/doc2vec_img2dict.py --dataset --img_feature_file
 ```
 
-4. Move the processed folder to the model folder. 
+4. Move the processed folder to the main model folder. 
 
 Pre-training:
 ```
