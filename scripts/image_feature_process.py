@@ -1,4 +1,5 @@
 import struct
+
 import numpy as np
 
 def rm_items_without_image(df, img_path):
